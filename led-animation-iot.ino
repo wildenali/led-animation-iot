@@ -1,28 +1,32 @@
-#include "FastLED.h"
-#define NUM_LEDS 20   // jumlah led
-#define DATA_PIN D5   // pin signal
+#include "define_variables.h"
+#include "colors_pallete.h"
+#include "basic_animation.h"
 
-CRGB leds[NUM_LEDS];
+
+
 
 void setup() {
-  delay(2000);
-  FastLED.addLeds<WS2811, DATA_PIN, BRG>(leds, NUM_LEDS);
+    Serial.begin(9600);
+    delay(3000); // power-up safety delay
+    FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS);//.setCorrection(TypicalLEDStrip);
+    FastLED.setBrightness(BRIGHTNESS);
+    currentPalette = RainbowColors_p;
+    currentBlending = LINEARBLEND;
 }
 
-void loop() {
-  leds[0] = CRGB(255,0,0);
-  leds[1] = CRGB(0,255,0);
-  leds[2] = CRGB(0,0,255);
-  FastLED.show();
-//  delay(1000);
-//  leds[0] = CRGB(0,0,255);
-//  leds[1] = CRGB(255,0,0);
-//  leds[2] = CRGB(0,255,0);
-//  FastLED.show();
-//  delay(1000);
-//  leds[0] = CRGB(0,255,0);
-//  leds[1] = CRGB(0,0,255);
-//  leds[2] = CRGB(255,0,0);
-//  FastLED.show();
-//  delay(1000);
+
+void loop()
+{
+  //colors_pallete_example();
+  //basic_animation_ngeblink();
+  //basic_animation_cylon();
+  //basic_animation_rainbow();
+  //basic_animation_rainbowWithGlitter();
+  //basic_animation_confetti();
+  //basic_animation_sinelon();
+  //basic_animation_bpm();
+  //basic_animation_juggle();
+  //basic_animation_fire2012();
+  basic_animation_first_light();
+  
 }
